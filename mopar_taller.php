@@ -8,9 +8,6 @@
  * 	Author URI: http://www.daft.cl
  */
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-
 function theme_options_panel(){
 	add_menu_page('Doctor Mopar Taller', 'Doctor Mopar Taller', 'manage_options', 'mopar-taller', 'taller_home_func');
 	add_submenu_page( 'mopar-taller', 'Vehiculos', 'Vehiculos', 'manage_options', 'mopar-vehiculos', 'taller_vehiculos_func');
