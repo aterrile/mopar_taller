@@ -192,7 +192,6 @@ $(document).ready(function(){
     			$(".overlay").show();
     		},
     		success: function(json){
-    			$(".overlay").hide();
     			if( json.status == 'OK' ){
         			$('#modalNewVehiculo').modal('hide');
         			$.alert({
@@ -208,6 +207,7 @@ $(document).ready(function(){
 					    }
 					});
         		} else {
+        			$(".overlay").hide();
         			$.alert({
 						title: false,
 						type: 'red',
