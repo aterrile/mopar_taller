@@ -121,13 +121,13 @@ function eliminar_vehiculo_callback(){
 function insertar_vehiculo_callback(){
 	global $wpdb;
 	//Check Vehiculo Exist
-	$sql = "SELECT * FROM vehiculos WHERE nro_motor = '" . $_POST['nro_motor'] . "'";
+	$sql = "SELECT * FROM vehiculos WHERE patente = '" . $_POST['patente'] . "'";
 	$vehiculo = $wpdb->get_row($sql);
 
 	if( $vehiculo ){
 		$json = [
 			'status' => 'ERROR',
-			'msg' => 'Nro. de motor del Vehiculo ya existe en la base de datos'
+			'msg' => 'La Patente del Vehiculo ya existe en la base de datos'
 		];
 	} else {
 
