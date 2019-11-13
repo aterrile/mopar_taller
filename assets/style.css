@@ -34,3 +34,18 @@ select.form-control{
 	z-index: 99999;
 }
 
+section#historial .badge-pill {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 50%;
+    display: block;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    line-height: 32px;
+    color: #fff;
+}
+section#historial .card{
+	max-width: 100%;
+}
+

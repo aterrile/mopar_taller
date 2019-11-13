@@ -25,7 +25,12 @@ function taller_vehiculos_func(){
     $vehiculos = $wpdb->get_results('SELECT * FROM vehiculos');
 	$clientes = $wpdb->get_results('SELECT * FROM clientes ORDER BY apellidoPaterno ASC');
 	
-	include('views/vehiculos.php');	
+	if($_GET['historial']){
+		include('views/historial.php');
+	} else {
+		include('views/vehiculos.php');
+	}
+	
 }
 
 function taller_clientes_func(){

@@ -3,9 +3,7 @@
 <div class="box pr-4">
 
 	<div class="box-header mb-4">
-		<h2 class="float-left"> Lista de Vehiculos </h2>
-		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modalNewVehiculo">Nuevo Vehiculo</button>
-
+		<h2 class="float-left"> Historial Vehiculos </h2>
 		<div class="clearfix"></div>
 	</div>
 
