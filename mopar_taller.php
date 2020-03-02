@@ -1,6 +1,6 @@
 <?php
 /**
- *  Plugin Name: Taller Doctor Mopar
+ *  Plugin Name: Taller Automotriz
  * 	Plugin URI: http://www.daft.cl
  * 	Description: Sencillo plugin para administrar el Taller
  * 	Version: 0.1
@@ -82,7 +82,8 @@ function insertar_cliente_callback(){
 		'apellidoMaterno' => $_POST['apellidoMaterno'],
 		'email' => $_POST['email'],
 		'telefono' => $_POST['telefono'],
-		'secret' => md5($pass)
+		'secret' => md5($pass),
+		'nuevo' => 1
 	];
 	$wpdb->insert('clientes',$array_insert);
 
@@ -116,7 +117,7 @@ function actualizar_cliente_callback(){
 
 		$body = "Hola " . $_POST['nombres'] . "\n\nSe te ha creado una nueva contraseña para poder acceder y ver el historial de tu vehiculo en el taller Doctor Mopar.\n\nTu nueva contraseña es: " . $_POST['secret'] . "\n\n";
 		$body .= "https://www.doctormopar.com/portal-de-cliente/";
-		mail($_POST['email'].",aterrile@gmail.com",'Nueva contraseña para entrar a DoctorMopar',$body);
+		mail($_POST['email'].",j.basso@me.com",'Nueva contraseña para entrar a DoctorMopar',$body);
 	}
 
 	$wpdb->update('clientes',$array_edit,['id' => $_POST['regid']]);
