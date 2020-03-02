@@ -1,19 +1,25 @@
 ﻿<?php include 'header.php'; ?>
 
+<?php 
+if( $_GET['cid'] ):
+	include 'ots_by_cliente.php';
+else:
+?>
+
+
 <div class="box pr-4">
 	<div class="box-header mb-4">
-		<h2 class="float-left"> Lista de Clientes </h2>
+		<h2 class="font-weight-light text-center text-muted float-left"> Lista de Clientes </h2>
 		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modalNewCliente">Nuevo Cliente</button>
 
 		<div class="clearfix"></div>
 	</div>
 	<div class="box-body">
-		<table class="table table-striped table-bordered">
+		<table class="table table-striped table-bordered" id="tabla_clientes">
 			<thead>
 				<tr>
 					<th>#</th>
 					<th> Nombre </th>
-					<th> Rut </th>
 					<th> Email </th>
 					<th> Telefono </th>
 					<th class="text-center">Acciones</th>
@@ -22,14 +28,14 @@
 			<tbody>
 				<?php foreach ($clientes as $cliente): ?>
 				<tr data-regid="<?php echo $cliente->id; ?>">
-					<td> <?php echo $cliente->id; ?> </td>
-					<td> <?php echo Mopar::getNombreCliente($cliente->id) ?> </td>
-					<td> <?php echo $cliente->rut; ?> </td>
-					<td> <?php echo $cliente->email; ?> </td>
-					<td> <?php echo $cliente->telefono; ?> </td>
+					<td data-regid="<?php echo $cliente->id; ?>"> <?php echo $cliente->id; ?> </td>
+					<td data-nombres="<?php echo $cliente->nombres; ?>" data-apellidopaterno="<?php echo $cliente->apellidoPaterno; ?>" data-apellidomaterno="<?php echo $cliente->apellidoMaterno; ?>"> <?php echo Mopar::getNombreCliente($cliente->id) ?> </td>
+					<td data-email="<?php echo $cliente->email; ?>"> <?php echo $cliente->email; ?> </td>
+					<td data-telefono="<?php echo $cliente->telefono; ?>"> <?php echo $cliente->telefono; ?> </td>
 					<td class="text-center">
-						<button class="btn btn-success" data-toggle="tooltip" title="Editar Cliente"><i class="fa fa-pencil"></i></button>
+						<button class="btn btn-success btnEdit" data-toggle="tooltip" title="Editar Cliente"><i class="fa fa-pencil"></i></button>
 						<button class="btn btn-danger btnDelete" data-toggle="tooltip" title="Eliminar Cliente"><i class="fa fa-trash-o"></i></button>
+						<a href="admin.php?page=mopar-clientes&cid=<?php echo $cliente->id ?>" class="btn btn-info" data-toggle="tooltip" title="Ver OTs del Cliente"><i class="fa fa-search"></i></a>
 					</td>
 				</tr>
 				<?php endforeach; ?>
@@ -60,7 +66,80 @@
 						        <div class="input-group-prepend">
 					          		<span class="input-group-text">Nombres</span>
 						        </div>
-						        <input type="text" name="nombres" class="form-control" style="text-transform: uppercase;" required>
+						        <input type="text" name="nombres" class="form-control" required>
+					      	</div>
+				    	</div>
+				    	<div class="form-group col-md-6">
+					      	<div class="input-group">
+						        <div class="input-group-prepend">
+					          		<span class="input-group-text">Apellido Paterno</span>
+						        </div>
+						        <input type="text" name="apellidoPaterno" class="form-control" required>
+					      	</div>
+				    	</div>
+				    	<div class="form-group col-md-6">
+					      	<div class="input-group">
+						        <div class="input-group-prepend">
+					          		<span class="input-group-text">Apellido Materno</span>
+						        </div>
+						        <input type="text" name="apellidoMaterno" class="form-control" required>
+					      	</div>
+				    	</div>
+				    	<div class="form-group col-md-6">
+					      	<div class="input-group">
+						        <div class="input-group-prepend">
+					          		<span class="input-group-text">Email</span>
+						        </div>
+						        <input type="email" name="email" class="form-control" required>
+					      	</div>
+				    	</div>
+				    	<div class="form-group col-md-6">
+					      	<div class="input-group">
+						        <div class="input-group-prepend">
+					          		<span class="input-group-text">Telefono</span>
+						        </div>
+						        <div class="input-group-prepend">
+					          		<span class="input-group-text">(+56)</span>
+						        </div>
+						        <input type="text" name="telefono" class="form-control" required>
+					      	</div>
+				    	</div>
+	      			</div>
+      			</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times"></i> Cerrar y volver</button>
+	        		<button type="submit" class="btn btn-success btnGuardar">Guardar <i class="fa fa-save"></i> </button>
+	      		</div>
+			</div>
+	  	</div>
+	</form>
+</div>
+
+
+
+
+
+<!-- Editar Cliente -->
+<div class="modal fade" id="modalEditCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<form method="post" id="formEditCliente">
+		<input type="hidden" name="action" value="actualizar_cliente">
+		<input type="hidden" name="regid" value="">
+		<div class="modal-dialog modal-lg">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title">Datos del Cliente</h5>
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          			<span aria-hidden="true">&times;</span>
+	        		</button>
+	      		</div>
+	      		<div class="modal-body">
+        			<div class="form-row">
+				    	<div class="form-group col-md-12">
+					      	<div class="input-group">
+						        <div class="input-group-prepend">
+					          		<span class="input-group-text">Nombres</span>
+						        </div>
+						        <input type="text" name="nombres" class="form-control" required>
 					      	</div>
 				    	</div>
 				    	<div class="form-group col-md-6">
@@ -101,13 +180,13 @@
 				    	<div class="form-group col-md-6">
 					      	<div class="input-group">
 						        <div class="input-group-prepend">
-					          		<span class="input-group-text">Rut</span>
+					          		<span class="input-group-text">Cambiar Password</span>
 						        </div>
-						        <input type="text" name="rut" class="form-control" required>
+						        <input type="text" name="secret" value="*********" autocomplete="off" class="form-control" required>
 					      	</div>
 				    	</div>
-				  	</div>
-	      		</div>
+	      			</div>
+      			</div>
 	      		<div class="modal-footer">
 	        		<button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times"></i> Cerrar y volver</button>
 	        		<button type="submit" class="btn btn-success btnGuardar">Guardar <i class="fa fa-save"></i> </button>
@@ -116,6 +195,11 @@
 	  	</div>
 	</form>
 </div>
+
+
+
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script></head>
 
@@ -162,21 +246,13 @@ $(document).ready(function(){
 		        }
 		    }
 		});
-	})
+	});
+
+
 
 	$("#formNuevoCliente").submit(function(e){
-		if( !IsRut( $('[name=rut]').val() ) ){
-			$.alert({
-				type: 'red',
-				title: false,
-				content: 'El RUT ingresado no es válido'
-			})
-			$('[name=rut]').focus();
-			return false;
-		}
-
 		e.preventDefault();
-		regid = $(this).closest('tr').data('regid');
+
 		$.confirm({
 		    title: 'Nueva Password para nuevo cliente!',
 		    content: 'Al crear un nuevo cliente, se generará una password aleatoria y será enviada al email del cliente ingresado.<br>¿Proceder?',
@@ -231,14 +307,73 @@ $(document).ready(function(){
 		});
 	});
 
+
+
+	$(".btnEdit").click(function(){
+		nombres = $(this).closest('tr').find('[data-nombres]').data('nombres');
+		apellidopaterno = $(this).closest('tr').find('[data-apellidopaterno]').data('apellidopaterno');
+		apellidomaterno = $(this).closest('tr').find('[data-apellidomaterno]').data('apellidomaterno');
+		email = $(this).closest('tr').find('[data-email]').data('email');
+		telefono = $(this).closest('tr').find('[data-telefono]').data('telefono');
+		tr = $(this).closest('tr');
+		regid = tr.data('regid');
+
+		$("#formEditCliente [name=regid]").val(regid);
+		$("#formEditCliente [name=nombres]").val(nombres);
+		$("#formEditCliente [name=apellidoPaterno]").val(apellidopaterno);
+		$("#formEditCliente [name=apellidoMaterno]").val(apellidomaterno);
+		$("#formEditCliente [name=email]").val(email);
+		$("#formEditCliente [name=telefono]").val(telefono);
+
+		$("#modalEditCliente").modal('show');
+	})
+
+	$("#formEditCliente").submit(function(e){
+		e.preventDefault();
+		$.ajax({
+    		type: 'POST',
+    		url: '<?php echo admin_url('admin-ajax.php'); ?>',
+    		dataType: 'json',
+    		data: $('#formEditCliente').serialize() + '&regid=' + regid,
+    		beforeSend: function(){
+    			$(".overlay").show();
+    		},
+    		success: function(json){
+    			$(".overlay").hide();
+    			if( json.status == 'OK' ){
+        			$('#modalEditCliente').modal('hide');
+        			$.alert({
+						title: false,
+						type: 'green',
+						content: 'Cliente editado correctamente',
+						buttons: {
+							volver: {
+					            action: function () {
+					                location.reload();
+					            }
+					        }
+					    }
+					});
+        		} else {
+        			$.alert({
+						title: false,
+						type: 'red',
+						content: json.msg
+					});
+        		}
+    		}
+    	})
+	});
+
 	$("[name=rut]").blur(function(){
 		$(this).val( formateaRut($(this).val() ) );
 	});
 
+    $('#tabla_clientes').DataTable();
 });
 
 
 
 </script>
-
+<?php endif; ?>
 <?php include 'footer.php'; ?>

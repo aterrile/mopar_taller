@@ -1,0 +1,22 @@
+[06-Jan-2020 12:33:55 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/_class/locale.class.php on line 68
+[06-Jan-2020 12:33:55 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/_class/locale.class.php on line 68
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5132
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5250
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5132
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5250
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5053
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5055
+[21-Jan-2020 13:36:57 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/html2pdf.class.php on line 5056
+[21-Jan-2020 14:25:27 UTC] PHP Fatal error:  Uncaught <span style="color: #AA0000; font-weight: bold;">ERROR n°4</span><br>Fichero : /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/_class/parsingHtml.class.php<br>Línea : 119<br><br>Código HTML no válido, las etiquetas no estan cerradas en el orden correcto.<br>Estado : <pre>Array
+(
+    [0] => page
+    [1] => table
+    [2] => tr
+    [3] => td
+    [4] => table
+)
+</pre><br><br>HTML : ...olid #000;&quot;&gt;
+				&lt;table&gt;
+					&lt;/tr&gt;
+						&lt;td&gt;&lt;strong&gt;Marca/Modelo: &lt;/...
+  thrown in /home/doctormo/public_html/wp-content/plugins/mopar_taller/html2pdf/_class/parsingHtml.class.php on line 119

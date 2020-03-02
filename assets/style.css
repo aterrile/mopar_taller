@@ -34,18 +34,59 @@ select.form-control{
 	z-index: 99999;
 }
 
-section#historial .badge-pill {
-    padding-right: 0;
-    padding-left: 0;
-    border-radius: 50%;
-    display: block;
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    line-height: 32px;
-    color: #fff;
-}
-section#historial .card{
+section#history .card{
 	max-width: 100%;
+	position: relative;
 }
+
+section#history .card:before{
+	content: '';
+	position: absolute;
+	top: 35px;
+	left: -17px;
+	width: 0;
+    height: 0;
+    border-right: 16px;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-right-color: inherit;
+    border-right-style: solid;
+}
+
+section#history .badge.badge-pill{
+	border-radius: 100px;
+    width: 75px;
+    height: 75px;
+    padding: 9px 0 0 0;
+}
+
+section#history .badge.badge-pill em{
+	font-style: normal;
+	display: block;
+	text-align: center;
+	color: #fff;
+	font-weight: normal;
+}
+
+section#history .badge.badge-pill em.mes,
+section#history .badge.badge-pill em.ano{
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+section#history .badge.badge-pill em.dia{
+	font-size: 28px;
+}
+
+.custom-file-label::after{
+	content: 'Buscar' !important;
+}
+
+
+section#modelos table img{
+	width: 100px; 
+	height: auto;
+}
+
+
 
